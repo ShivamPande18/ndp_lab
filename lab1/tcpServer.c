@@ -7,7 +7,7 @@
 #include<netinet/in.h>
 #define MAXSIZE 90
 
-main()
+void main()
 {
 	int sockfd,newsockfd,retval,i;
 	socklen_t actuallen;
@@ -62,7 +62,7 @@ main()
 		}
 		printf("%s \n",buff);
 		memset(buff, '\0', sizeof(buff));
-		scanf("%s",buff);
+		fgets(buff, MAXSIZE, stdin);
 		buff[strlen(buff)] = '\0';
 		int s = strlen(buff) * sizeof(char);
 		sentbytes=send(newsockfd,buff,s,0);
