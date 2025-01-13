@@ -9,7 +9,7 @@
 #include<stdlib.h>
 #define MAXSIZE 50
 
-main()
+void main()
 {
 	char buff[MAXSIZE];
 	int sockfd,retval,i;
@@ -36,7 +36,7 @@ main()
 	{
 		memset(buff, '\0', sizeof(buff));
 		printf("enter the text\n");
-		scanf("%s",buff);
+		fgets(buff, MAXSIZE, stdin);
 		buff[strlen(buff)] = '\0';
 		int s = strlen(buff) * sizeof(char);
 		sentbytes=send(sockfd,buff,s,0);
@@ -51,7 +51,7 @@ main()
 		}
 		memset(buff, '\0', sizeof(buff));
 		recedbytes=recv(sockfd,buff,sizeof(buff),0);
-		printf ("%s \n", buff);
+		puts (buff);
 		
 		if (buff[0] == 's' && buff[1] == 't' && buff[2] == 'o' && buff[3] == 'p')
 		{
